@@ -2,7 +2,7 @@
 from aiohttp import web
 from aiohttp.web import json_response
 
-from .models import History, HistoryEntry
+from .models import MyClass
 from .db import get_objects
 
 import logging
@@ -11,6 +11,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+# This example used to use a peewee ORM but now it is up to every microservice
 class Index(web.View):
     async def get(self):
         user_agent = self.request.headers.get('User-Agent')
@@ -27,7 +28,7 @@ class Index(web.View):
                 defaults={'user_agent': user_agent},
                 user_agent=user_agent
             )
-            await objects.create(HistoryEntry, history=history)
+            await objects.create(MyClass, history=history)
             times = await objects.count(history.entries)
 
         return json_response({

@@ -4,10 +4,10 @@ import logging
 from playhouse.db_url import connect
 from peewee_migrate import Router
 
-from full_async_web_app_example import MIGRATE_DIR
-from full_async_web_app_example.app import create as create_app
-from full_async_web_app_example.app.db import get_objects
-from full_async_web_app_example.app.config import Test
+from myapp import MIGRATE_DIR
+from myapp.app import create as create_app
+from myapp.app.db import get_objects
+from myapp.app.config import Test
 
 logger = logging.getLogger(__name__)
 
